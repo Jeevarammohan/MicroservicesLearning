@@ -1,0 +1,16 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: API-GATEWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+        - id: EMPLOYEE-SERVICE
+          uri: lb://employee-service/
+          predicates:
+            - Path=/employee-service/**
+
+      discovery:
+        locator:
+          enabled: true
